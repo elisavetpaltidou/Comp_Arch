@@ -19,9 +19,6 @@ main:
 	lw	a5,-24(s0)
 	mul	a5,a4,a5
 	sw	a5,-28(s0)
-	lw	a5,-28(s0)
-	addi	a5,a5,3
-	sw	a5,-32(s0)
 	lw	a4,-28(s0)
 	li	a5,4
 	bgt	a4,a5,.L2
