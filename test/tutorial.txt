@@ -1,0 +1,32 @@
+# 1 "tutorial.c"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "tutorial.c"
+int main() {
+    int a = 5;
+    int b = 7;
+    int result;
+
+
+    result = a * b;
+    int temp = result + 3;
+
+    if(result < 5) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+# 1 "function.h"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "function.h"
+int max(int a,int b){
+    int temp_var;
+    if(a<b){
+        temp_var=b;
+    }else{
+        temp_var=a;
+    }
+    return temp_var;
+}
