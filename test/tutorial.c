@@ -5,7 +5,7 @@ int main() {
 
     // Perform multiplication
     result = a * b;
-    int temp = result + 3;
+
     // Use the result in a way that prevents optimization
     if(result < 5) {
         return -1;
@@ -13,4 +13,3 @@ int main() {
         return 0;
     }
 }
-
