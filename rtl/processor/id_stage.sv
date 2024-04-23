@@ -206,13 +206,10 @@ assign rc_idx=if_id_IR[11:7];  // inst operand C register index
 
 //Hazard Detection Unit (feedback to IF stage)
 always_comb begin : Hazard_Detection_Unit
-	if(((ra_idx != 0 && (ra_idx == id_ex_dest_reg_idx)) || (rb_idx != 0 && (rb_idx == id_ex_dest_reg_idx)))) 
+	if(ra_idx != 0 && (ra_idx == id_ex_dest_reg_idx || ra_idx == ex_mem_dest_reg_idx || ra_idx == mem_wb_dest_reg_idx)) 
 		id_hazard_flag = 1;
 	
-	else if(((ra_idx != 0 && (ra_idx == ex_mem_dest_reg_idx)) || (rb_idx != 0 && (rb_idx == ex_mem_dest_reg_idx)))) 
-		id_hazard_flag = 1;
-		
-	else if(((ra_idx != 0 && (ra_idx == mem_wb_dest_reg_idx)) || (rb_idx != 0 && (rb_idx == mem_wb_dest_reg_idx)))) 
+	else if(rb_idx != 0 && (rb_idx == id_ex_dest_reg_idx || rb_idx == ex_mem_dest_reg_idx || rb_idx == mem_wb_dest_reg_idx)) 
 		id_hazard_flag = 1;
 		
 	else 
