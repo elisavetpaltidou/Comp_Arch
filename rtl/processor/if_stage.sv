@@ -33,7 +33,7 @@ assign PC_plus_4 = PC_reg + 4;
 assign next_PC = (ex_take_branch_out) ? ex_target_PC_out : PC_plus_4;
 
 // stall PC
-assign PC_enable = ~id_hazard_flag;
+assign PC_enable = ~id_stall_flag;
 
 // Pass PC down pipeline w/instruction
 assign if_PC_out = PC_reg;
@@ -47,12 +47,6 @@ always_ff @(posedge clk) begin
 		PC_reg <= next_PC; // transition to next PC
 end 
 
-
-always_ff @(posedge clk) begin
-	if (rst)
-		if_valid_inst_out <= 1; 
-	else
-		if_valid_inst_out <= mem_wb_valid_inst;
-end
+assign if_valid_inst_out = 1;
 
 endmodule  // module if_stage
